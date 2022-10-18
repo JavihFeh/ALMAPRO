@@ -73,21 +73,7 @@ class AlunosController extends Controller
 
         return redirect()->route('alunos.index')->with('ok', 'alunos cadastrados com sucesso!');
     }
-
-    public function show(alunos $aluno)
-    {   
-        $aluno->where('RA', 'LIKE', $aluno->RA)->get();
-        $id = explode(',', $aluno->id_materia);
-
-        foreach($id as $i)
-        {
-            $materias = Materias::where('id', 'LIKE', $i)->get();
-        }
-        
-
-        return view('alunos.index', compact('aluno'), compact('materias'));
-    }
-
+    
     public function edit(alunos $aluno)
     {
         $filmes = array();
