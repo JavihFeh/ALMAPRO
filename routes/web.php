@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::resource('alunos', AlunosController::class);
 
-Route::resource('professores', ProfessoresController::class);
+Route::resource('professores', ProfessoresController::class,['parameters' =>[
+    'professores' => 'professor'
+]]);
 
 Route::resource('materias', MateriasController::class);
 

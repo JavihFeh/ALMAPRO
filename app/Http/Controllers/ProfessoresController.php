@@ -40,18 +40,18 @@ class ProfessoresController extends Controller
         return redirect()->route('professores.index')->with('ok', 'Professores cadastrados com sucesso!');
     }
 
-    public function show(professores $professore)
+    public function show(professores $professor)
     {
-        $professore->where('RP', 'LIKE', $professore->RP)->get();
-        return view('professores.show', compact('professore'));
+        $professor->where('RP', 'LIKE', $professor->RP)->get();
+        return view('professores.show', compact('professor'));
     }
 
-    public function edit(professores $professore)
+    public function edit(professores $professor)
     {           
-        return view('professores.edit', compact('professore'));
+        return view('professores.edit', compact('professor'));
     }
 
-    public function update(Request $request, professores $professore)
+    public function update(Request $request, professores $professor)
     {
         $request->validate([
             'RP' => 'required',
@@ -59,7 +59,7 @@ class ProfessoresController extends Controller
             'Sobrenome' => 'required',
         ]);
 
-        $professore->update([
+        $professor->update([
             'RP' => $request->RP,
             'Nome' => $request->Nome,
             'Sobrenome' => $request->Sobrenome,
@@ -68,9 +68,9 @@ class ProfessoresController extends Controller
         return redirect()->route('professores.index')->with('ok', 'Professor atualizado com sucesso!');
     }
 
-    public function destroy(professores $professore)
+    public function destroy(professores $professor)
     {
-        $professore->delete();
+        $professor->delete();
         return redirect()->route('professores.index')->with('ok', 'Professor removido com sucesso!');
     }
 
